@@ -1,67 +1,125 @@
+/* assets/css/styles.css
+   Polished theme for IkyCom Solutions
+   Full replacement - paste entire file
+*/
+
 :root{
-  --bg:#0b1f34;--bg2:#0a1826;--brand:#1e88e5;--text:#e7eef7;--muted:#b7c3d4;--ring:rgba(255,255,255,.12);
-  --shadow:0 10px 30px rgba(0,0,0,.35);--radius:18px
+  --bg:#071824;
+  --bg-2:#04121a;
+  --brand:#1e88e5;
+  --accent:#62a9ff;
+  --text:#edf6ff;
+  --muted:#9fb3ca;
+  --ring:rgba(255,255,255,.06);
+  --card: rgba(255,255,255,.03);
+  --radius:16px;
+  --shadow: 0 14px 40px rgba(2,10,20,.45);
 }
+
+/* Reset & base */
 *{box-sizing:border-box}
 html,body{height:100%;scroll-behavior:smooth}
 body{
-  margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
-  background:radial-gradient(1200px 600px at 85% -10%, #0f365f 0%, var(--bg) 40%, var(--bg2) 100%) fixed
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background:linear-gradient(180deg,var(--bg),var(--bg-2));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
 }
-a{color:inherit;text-decoration:none}
+
+/* Layout */
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
+a{color:inherit;text-decoration:none}
 
-/* nav */
+/* NAV */
 .nav{
-  position:sticky;top:0;z-index:40;
-  background:linear-gradient(180deg, rgba(10,20,35,.75), rgba(10,20,35,.55) 60%, rgba(10,20,35,0));
-  border-bottom:1px solid var(--ring);backdrop-filter:saturate(140%) blur(6px)
+  position:sticky;top:0;z-index:60;
+  background:linear-gradient(180deg, rgba(7,24,36,.82), rgba(7,18,28,.55));
+  border-bottom:1px solid var(--ring);
+  backdrop-filter:saturate(120%) blur(6px);
 }
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
-.logo{display:flex;align-items:center;gap:12px;font-weight:800}
-.logo-dot{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(30,136,229,.25)}
-.menu{display:flex;gap:22px;font-weight:600}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1rem}
+.logo-dot{width:12px;height:12px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 6px rgba(30,136,229,.10)}
+.menu{display:flex;gap:18px;font-weight:600}
+.menu a{padding:8px 10px;border-radius:10px;transition:all .12s ease;opacity:.95}
+.menu a:hover{background:rgba(255,255,255,.02);transform:translateY(-2px)}
+.menu a[aria-current="page"]{background:linear-gradient(135deg,var(--brand),var(--accent));color:#051324}
 
-/* hero */
-.hero{position:relative;display:flex;align-items:center;min-height:60vh;padding:110px 0 70px;isolation:isolate;overflow:hidden}
+/* HERO */
+.hero{
+  position:relative;display:flex;align-items:center;min-height:64vh;padding:100px 0 64px;overflow:hidden;
+}
 .hero.bg::before{
-  content:"";position:absolute;inset:0;
-  /* IMPORTANT: path is relative to THIS CSS file */
+  content:"";
+  position:absolute;inset:0;
   background:url('../images/ikycom-hero.jpg') center/cover no-repeat fixed;
-  filter:saturate(105%) contrast(102%)
+  transform:scale(1.02);
+  filter:contrast(96%) saturate(105%);
 }
-.hero.bg::after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 600px at 85% -10%, rgba(24,98,169,.55), rgba(4,9,16,.88) 60%, rgba(4,9,16,.96) 100%)}
-.hero > .container{position:relative;z-index:1}
-.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-weight:700;color:#c5ddff;opacity:.85;font-size:.85rem}
-.title{font-size:clamp(2rem,3.2vw + 1rem,3.8rem);line-height:1.05;margin:.2rem 0 .6rem}
-.lead{font-size:clamp(1rem,1.1vw + .6rem,1.2rem);color:var(--muted);max-width:70ch}
-.cta-row{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;font-weight:700;border:1px solid transparent;box-shadow:var(--shadow);transition:transform .12s ease}
-.btn-primary{background:linear-gradient(135deg, var(--brand), #62a9ff);color:#051324}.btn-primary:hover{transform:translateY(-2px)}
-.btn-ghost{background:rgba(255,255,255,.06);border-color:var(--ring);color:var(--text)}.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.hero.bg::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(4,9,16,.55), rgba(4,9,16,.82));
+}
+.hero > .container{position:relative;z-index:2}
+.eyebrow{font-weight:700;color:#cfe8ff;letter-spacing:.16em;text-transform:uppercase;font-size:.82rem}
+.title{font-size:clamp(2rem,3.2vw + 1rem,3.6rem);line-height:1.02;margin:.4rem 0 .6rem;font-weight:800}
+.lead{font-size:clamp(1rem,1.05vw + .5rem,1.15rem);color:var(--muted);max-width:66ch}
+.cta-row{display:flex;gap:14px;margin-top:20px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;font-weight:700;border:1px solid transparent;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .12s ease, box-shadow .12s ease}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--accent));color:#051324}
+.btn-ghost{background:rgba(255,255,255,.03);border:1px solid var(--ring);color:var(--text)}
+.btn:hover{transform:translateY(-3px)}
 
-/* sections */
-section{padding:70px 0}
-.section-title{font-size:2rem;margin:0 0 12px}
-.section-lead{color:var(--muted);max-width:70ch}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
-.card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid var(--ring);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-.card h3{margin:0 0 6px;font-size:1.1rem}
+/* Sections */
+section{padding:72px 0}
+.section-title{font-size:1.6rem;font-weight:700;color:var(--brand);margin-bottom:8px}
+.section-lead{color:var(--muted);font-size:1rem;line-height:1.6}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+  border:1px solid var(--ring);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:0 8px 30px rgba(0,0,0,.22);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.card h3{margin:0 0 8px}
 .card p{margin:0;color:var(--muted)}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.32)}
 
-/* grids */
+/* Grid 2 & portrait */
 .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
-.portrait{width:100%;max-width:520px;border-radius:22px;border:1px solid var(--ring);box-shadow:var(--shadow);object-fit:cover;aspect-ratio:4/5}
+.portrait{width:100%;max-width:420px;border-radius:999px;border:6px solid rgba(255,255,255,.05);box-shadow:0 14px 40px rgba(2,10,20,.45);object-fit:cover;aspect-ratio:1/1}
 
-/* forms */
+/* Forms */
 .form{max-width:720px}
-.field{display:flex;flex-direction:column;gap:6px}
-.input,.textarea{width:100%;padding:14px 12px;border-radius:12px;border:1px solid var(--ring);background:rgba(255,255,255,.04);color:var(--text)}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.input,.textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--ring);background:rgba(255,255,255,.03);color:var(--text)}
 
-/* footer */
-footer{padding:40px 0;color:#a9b7c9;border-top:1px solid var(--ring);background:linear-gradient(180deg, rgba(10,20,35,.4), rgba(10,20,35,.7))}
+/* Iframe (appointments) */
+.iframe-wrap{position:relative;padding-top:0;height:680px;border-radius:12px;overflow:hidden;border:1px solid var(--ring);background:rgba(255,255,255,.02)}
+@media(max-width:920px){.iframe-wrap{height:520px}}
+
+/* Footer */
+footer{padding:36px 0;color:#9fb3ca;border-top:1px solid var(--ring);background:linear-gradient(180deg, rgba(10,20,30,.35), rgba(6,12,20,.6))}
 .foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
 
-/* responsive */
-@media(max-width:920px){.cards{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+/* Utilities */
+.small{font-size:.95rem;color:var(--muted)}
+.eyebrow, .lead { -webkit-font-smoothing:antialiased; }
 
+/* Responsive */
+@media(max-width:960px){
+  .cards{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .menu{display:none}
+  .hero>.container{text-align:center}
+  .cta-row{justify-content:center}
+  .title{font-size:2rem}
+}
