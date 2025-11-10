@@ -7,24 +7,25 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <meta name="description" content="Ikanyeng Molemele — Managing Director, IkyCom Solutions" />
 </head>
 <body>
 
   <!-- NAVIGATION -->
-  <nav class="nav">
+  <nav class="nav" aria-label="Main navigation">
     <div class="container nav-inner">
       <a class="logo" href="index.html" style="display:flex; align-items:center; gap:10px;">
         <img src="assets/images/ikycom-logo.png" alt="IkyCom Solutions Logo" style="height:38px; width:auto;">
         <span style="font-weight:800;">IkyCom&nbsp;Solutions</span>
       </a>
 
-      <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="leadership.html" aria-current="page">Leadership</a>
-        <a href="appointments.html">Appointments</a>
-        <a href="contact.html">Contact</a>
+      <div id="primaryNav" class="menu" role="menubar">
+        <a role="menuitem" href="index.html">Home</a>
+        <a role="menuitem" href="about.html">About</a>
+        <a role="menuitem" href="services.html">Services</a>
+        <a role="menuitem" href="leadership.html" aria-current="page">Leadership</a>
+        <a role="menuitem" href="appointments.html">Appointments</a>
+        <a role="menuitem" href="contact.html">Contact</a>
       </div>
     </div>
   </nav>
@@ -42,12 +43,12 @@
   <main>
     <section class="container" style="margin-top:2rem;">
       <div class="grid-2" style="align-items:center; gap:3rem;">
-        
+
         <!-- LEFT: IMAGE -->
         <div style="text-align:center;">
-          <img 
-            src="assets/images/ikanyeng.jpg" 
-            alt="Ikanyeng Molemele - Managing Director of IkyCom Solutions" 
+          <img
+            src="assets/images/ikanyeng.jpg"
+            alt="Ikanyeng Molemele - Managing Director of IkyCom Solutions"
             style="width:100%; max-width:420px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.25); transition:transform 0.3s ease;"
             onmouseover="this.style.transform='scale(1.04)';"
             onmouseout="this.style.transform='scale(1)';"
@@ -92,41 +93,6 @@
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>
 
-  <!-- JS for navigation toggle -->
-  <script>
-    (function(){
-      const btn = document.getElementById('navToggle');
-      const nav = document.getElementById('primaryNav');
-      if(!btn || !nav) return;
-      btn.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        btn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
-        if(isOpen){
-          const first = nav.querySelector('a');
-          if(first) first.focus();
-        } else {
-          btn.focus();
-        }
-      });
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && nav.classList.contains('open')){
-          nav.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
-          btn.setAttribute('aria-label','Open navigation');
-          btn.focus();
-        }
-      });
-      document.addEventListener('click', (e) => {
-        if(!nav.classList.contains('open')) return;
-        if(!nav.contains(e.target) && e.target !== btn && !btn.contains(e.target)){
-          nav.classList.remove('open');
-          btn.setAttribute('aria-expanded','false');
-          btn.setAttribute('aria-label','Open navigation');
-        }
-      });
-    })();
-  </script>
-
 </body>
 </html>
+
